@@ -8,15 +8,17 @@ namespace FunctionalProgramming
 { 
     class LinqExample
     {
-        string value ="10,20,30,40";
+        string value = "90,100,82,89,55";
 
         string str = "greatJobwhat";
         public void CalculateAverage()
         {
             int i;
-            var a = value.Split(new[] { ',' }).Select(s => int.TryParse(s, out i) ? i : 0).ToArray();
+            var numberList = value.Split(new[] { ',' }).Select(s => int.TryParse(s, out i) ? i : 0).ToList();
 
-            double average = a.Average(mark => mark);
+            var maxObject = numberList.OrderBy(item => item).Skip(3);
+           
+            double average = maxObject.Average();
             Console.WriteLine(average);
 
         }
